@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "scripts": {
+    "res:build": "rescript",
+    "res:dev": "rescript -w",
+    "serve": "npm run res:build && node backend/Main.res.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@rescript/core": "^1.6.1",
+    "@rescript/react": "^0.13.0",
+    "express": "^4.21.2",
+    "react": "^19.0.0",
+    "rescript": "^11.1.4",
+    "rescript-express": "necaris/rescript-express#add-async-support"
+  }
+}

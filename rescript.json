@@ -1,0 +1,12 @@
+{
+  "name": "rescript-pepys",
+  "sources": [
+    { "dir": "src", "subdirs": true },
+    { "dir": "backend", "subdirs": true }
+  ],
+  "package-specs": [{ "module": "esmodule", "in-source": true }],
+  "suffix": ".res.js",
+  "bs-dependencies": ["@rescript/core", "@rescript/react", "rescript-express"],
+  "bsc-flags": ["-open RescriptCore"],
+  "jsx": { "version": 4 }
+}
