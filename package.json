@@ -1,16 +1,34 @@
 {
+  "private": true,
   "type": "module",
   "scripts": {
-    "res:build": "rescript",
-    "res:dev": "rescript -w",
-    "serve": "npm run res:build && node backend/Main.res.js"
+    "build:css": "postcss - -o public/main.css css/*.css",
+    "build:css:watch": "postcss - -o public/main.css css/*.css --watch",
+    "build:res": "rescript",
+    "build:res:watch": "rescript -w",
+    "bundle": "esbuild frontend/InitUI.res.mjs --bundle --outfile=public/app.js",
+    "bundle:watch": "esbuild frontend/InitUI.res.mjs --bundle --outfile=public/app.js --watch",
+    "build": "concurrently \"npm run build:css\" \"npm run build:res\" && npm run bundle",
+    "start": "concurrently \"npm run build:css:watch\" \"npm run build:res:watch\" \"npm run bundle:watch\" \"npm run serve\"",
+    "serve": "node backend/Server.res.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.15",
+    "esbuild": "0.24.0",
+    "postcss": "^8.4.28",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.3.3"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "@rescript/core": "^1.6.1",
     "@rescript/react": "^0.13.0",
+    "concurrently": "^9.1.0",
+    "daisyui": "^3",
     "express": "^4.21.2",
-    "react": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rescript": "^11.1.4",
     "rescript-express": "necaris/rescript-express#add-async-support"
   }

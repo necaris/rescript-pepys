@@ -4,10 +4,7 @@ let app = express()
 
 app->use(jsonMiddleware())
 
-app->get("/", (_req, res) => {
-  let _ = res->status(200)->json({"ok": true})
-  Promise.resolve()
-})
+app->use(staticMiddleware("public"))
 
 app->get("/db", async (_req, res) => {
   let c = DB.local("local.db")

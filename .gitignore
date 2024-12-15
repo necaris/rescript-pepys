@@ -1,2 +1,6 @@
+.jj
 node_modules
 lib/bs
+# Built artifacts
+public/main.css
+public/app.js
