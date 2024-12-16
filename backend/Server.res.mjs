@@ -13,10 +13,8 @@ app.use(Express.static("public"));
 app.get("/db", (async function (_req, res) {
         var c = DB.local("local.db");
         var r = await c.execute("SELECT * FROM beans;");
-        console.log(r);
         res.status(200).json({
-              result: r,
-              details: ({"rows": r.rows, "columns": r.columns})
+              result: r
             });
       }));
 

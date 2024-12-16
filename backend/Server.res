@@ -9,9 +9,7 @@ app->use(staticMiddleware("public"))
 app->get("/db", async (_req, res) => {
   let c = DB.local("local.db")
   let r = await DB.execute(c, "SELECT * FROM beans;")
-  Js.Console.log(r);
-
-  let _ = res->status(200)->json({"result": r, "details": %raw(` {"rows": r.rows, "columns": r.columns} `)})
+  let _ = res->status(200)->json({"result": r})
 
 })
 
